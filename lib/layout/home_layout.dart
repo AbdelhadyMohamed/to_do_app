@@ -35,7 +35,8 @@ class _HomeLayoutState extends State<HomeLayout> {
           IconButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.pushNamed(context, LoginScreen.routeName);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, LoginScreen.routeName, (route) => false);
               },
               icon: Icon(Icons.logout))
         ],

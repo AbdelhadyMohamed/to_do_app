@@ -15,7 +15,7 @@ class EditTaskBottomSheet extends StatefulWidget {
   EditTaskBottomSheet({required this.task, super.key}) {
     titleController.text = task.title;
     descriptionController.text = task.description;
-    task.id = FirebaseAuth.instance.currentUser!.uid;
+    // task.id = FirebaseAuth.instance.currentUser!.uid;
   }
 
   @override
@@ -95,7 +95,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
   editTaskPressed() {
     widget.task.title = widget.titleController.text;
     widget.task.description = widget.descriptionController.text;
-    widget.task.id = FirebaseAuth.instance.currentUser!.uid;
+    // widget.task.id = FirebaseAuth.instance.currentUser!.uid;
     // widget.task.id = "";
     FirebaseManager.editTask(widget.task);
     Navigator.pop(context);
