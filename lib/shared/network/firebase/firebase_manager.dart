@@ -7,6 +7,8 @@ import '../../../models/task_model.dart';
 import '../../../models/user_model.dart';
 
 class FirebaseManager {
+  static bool existEmail = false;
+  static bool weakPassword = false;
   static CollectionReference<TaskModel> getTasksCollection() {
     return FirebaseFirestore.instance
         .collection("Tasks")
@@ -62,9 +64,11 @@ class FirebaseManager {
       onSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        weakPassword = true;
         print('The password provided is too weak.');
         onError(e.message);
       } else if (e.code == 'email-already-in-use') {
+        existEmail = true;
         print('The account already exists for that email.');
         onError(e.message);
       }

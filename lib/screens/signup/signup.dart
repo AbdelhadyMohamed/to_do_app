@@ -41,6 +41,8 @@ class SignUp extends StatelessWidget {
               validator: (value) {
                 if (value != emailController.text) {
                   return 'email does not match';
+                } else {
+                  return null;
                 }
               },
             ),

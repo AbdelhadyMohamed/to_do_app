@@ -40,7 +40,8 @@ class _HomeLayoutState extends State<HomeLayout> {
               },
               icon: Icon(Icons.logout))
         ],
-        title: Text('Hello ${provider.userModel?.name}'),
+        title: Text(
+            'Hello ${provider.userModel?.name != null ? provider.userModel?.name : ""}'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
