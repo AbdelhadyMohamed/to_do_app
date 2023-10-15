@@ -10,7 +10,7 @@ import 'package:to_do_app/shared/styles/colors.dart';
 import '../../models/task_model.dart';
 
 class TasksTab extends StatefulWidget {
-  const TasksTab({super.key});
+  TasksTab({super.key});
 
   @override
   State<TasksTab> createState() => _TasksTabState();
@@ -24,51 +24,48 @@ class _TasksTabState extends State<TasksTab> {
     var provider = Provider.of<TasksProvider>(context);
 
     return ChangeNotifierProvider(
-        create: (BuildContext context) => TasksProvider(),
-        builder: (context, child) {
-          return Column(children: [
-            CalendarTimeline(
-              initialDate: selectedDate,
-              firstDate: DateTime.now(),
-              lastDate: DateTime.now().add(const Duration(days: 365)),
-              onDateSelected: (date) {
-                selectedDate = date;
-                provider.changeCurrentDate(selectedDate);
+      create: (BuildContext context) => TasksProvider(),
+      child: Column(children: [
+        CalendarTimeline(
+          initialDate: selectedDate,
+          firstDate: DateTime.now(),
+          lastDate: DateTime.now().add(const Duration(days: 365)),
+          onDateSelected: (date) {
+            selectedDate = date;
+            provider.changeCurrentDate(selectedDate);
 
-                setState(() {});
-              },
-              leftMargin: 20,
-              monthColor: Colors.black,
-              dayColor: Colors.black,
-              activeDayColor: Colors.white,
-              activeBackgroundDayColor: blueColor,
-              dotsColor: const Color(0xFF333A47),
-              selectableDayPredicate: (date) => true,
-              locale: 'en_ISO',
-            ),
-            Expanded(
-              child: StreamBuilder<QuerySnapshot<TaskModel>>(
-                stream: FirebaseManager.getTasks(selectedDate),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  if (snapshot.hasError) {
-                    const Center(child: Text("something went wrong"));
-                  }
-                  List<TaskModel> tasks =
-                      snapshot.data?.docs.map((doc) => doc.data()).toList() ??
-                          [];
-
-                  return ListView.builder(
-                      itemBuilder: (context, index) {
-                        return TasksItem(tasks[index]);
-                      },
-                      itemCount: tasks.length);
-                },
-              ),
-            )
-          ]);
-        });
+            setState(() {});
+          },
+          leftMargin: 20,
+          monthColor: Colors.black,
+          dayColor: Colors.black,
+          activeDayColor: Colors.white,
+          activeBackgroundDayColor: blueColor,
+          dotsColor: const Color(0xFF333A47),
+          selectableDayPredicate: (date) => true,
+          locale: 'en_ISO',
+        ),
+        Expanded(
+          child: StreamBuilder<QuerySnapshot<TaskModel>>(
+            stream: FirebaseManager.getTasks(selectedDate),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasError) {
+                const Center(child: Text("something went wrong"));
+              }
+              List<TaskModel> tasks =
+                  snapshot.data?.docs.map((doc) => doc.data()).toList() ?? [];
+              return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return TasksItem(tasks[index]);
+                  },
+                  itemCount: tasks.length);
+            },
+          ),
+        )
+      ]),
+    );
   }
 }
