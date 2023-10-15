@@ -15,6 +15,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseFirestore.instance.enableNetwork();
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => MyProvider(),
