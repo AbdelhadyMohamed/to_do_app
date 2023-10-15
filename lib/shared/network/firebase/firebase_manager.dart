@@ -31,6 +31,7 @@ class FirebaseManager {
 
   static Stream<QuerySnapshot<TaskModel>> getTasks(DateTime date) {
     return getTasksCollection()
+        // .orderBy('date', descending: true)
         .where("userId", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
         .where("date",
             isEqualTo: DateUtils.dateOnly(date).millisecondsSinceEpoch)

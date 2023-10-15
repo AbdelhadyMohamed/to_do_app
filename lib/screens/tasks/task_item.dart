@@ -5,9 +5,16 @@ import 'package:to_do_app/shared/network/firebase/firebase_manager.dart';
 import 'package:to_do_app/shared/styles/colors.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class TasksItem extends StatelessWidget {
+class TasksItem extends StatefulWidget {
   TaskModel task;
   TasksItem(this.task, {super.key});
+
+  @override
+  State<TasksItem> createState() => _TasksItemState();
+}
+
+class _TasksItemState extends State<TasksItem> {
+  bool slided = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,8 @@ class TasksItem extends StatelessWidget {
             children: [
               SlidableAction(
                 onPressed: (BuildContext context) {
-                  FirebaseManager.delTask(task.id);
+                  FirebaseManager.delTask(widget.task.id);
+                  setState(() {});
                 },
                 backgroundColor: Colors.red,
                 label: "delete",
@@ -68,15 +76,15 @@ class TasksItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    task.title,
+                    slided == false ? widget.task.title : "",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: task.isDone ? Colors.green : blueColor,
+                      color: widget.task.isDone ? Colors.green : blueColor,
                     ),
                   ),
                   Text(
-                    task.description,
+                    slided == false ? widget.task.description : "",
                     style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -87,8 +95,8 @@ class TasksItem extends StatelessWidget {
               const Spacer(),
               InkWell(
                 onTap: () {
-                  task.isDone = true;
-                  FirebaseManager.updateTask(task);
+                  widget.task.isDone = true;
+                  FirebaseManager.updateTask(widget.task);
                 },
                 child: Container(
                   width: 75,
@@ -97,12 +105,12 @@ class TasksItem extends StatelessWidget {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   decoration: BoxDecoration(
-                    color: task.isDone ? Colors.green : blueColor,
+                    color: widget.task.isDone ? Colors.green : blueColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: task.isDone
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 20, left: 14),
+                  child: widget.task.isDone
+                      ? const Padding(
+                          padding: EdgeInsets.only(top: 20, left: 14),
                           child: Text(
                             "Done!",
                             style: TextStyle(color: Colors.white),
@@ -130,7 +138,7 @@ class TasksItem extends StatelessWidget {
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: EditTaskBottomSheet(
-                task: task,
+                task: widget.task,
               ));
         });
   }

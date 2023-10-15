@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_app/providers/tasks_provider.dart';
 import 'package:to_do_app/screens/login/login.dart';
 import 'package:to_do_app/screens/settings/settings_tab.dart';
 import 'package:to_do_app/screens/tasks/task_tab.dart';
