@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,106 +32,107 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<TasksProvider>(context);
-    return ChangeNotifierProvider(
-      create: (context) => TasksProvider(),
-      child: Container(
-        height: 380,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text("Add new task",
-                    style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold)),
-                const SizedBox(height: 18),
-                TextFormField(
-                  validator: (value) {
-                    if (titleController.text.isEmpty) {
-                      return "Cannot leave title empty";
-                    }
-                    return null;
-                  },
-                  controller: titleController,
-                  decoration: InputDecoration(
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.red),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.red),
-                    ),
-                    hintText: "enter task title ",
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: blueColor),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: blueColor),
-                    ),
+    return Container(
+      height: 380,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text("Add new task",
+                  style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+              const SizedBox(height: 18),
+              TextFormField(
+                validator: (value) {
+                  if (titleController.text.isEmpty) {
+                    return "Cannot leave title empty";
+                  }
+                  return null;
+                },
+                controller: titleController,
+                decoration: InputDecoration(
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  hintText: "enter task title ",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: blueColor),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: blueColor),
                   ),
                 ),
-                const SizedBox(height: 25),
-                TextFormField(
-                  validator: (value) {
-                    if (descriptionController.text.isEmpty) {
-                      return "Cannot leave description empty";
-                    }
-                  },
-                  controller: descriptionController,
-                  decoration: InputDecoration(
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.red),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.red),
-                    ),
-                    hintText: "enter task description ",
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: blueColor),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: blueColor),
-                    ),
+              ),
+              const SizedBox(height: 25),
+              TextFormField(
+                validator: (value) {
+                  if (descriptionController.text.isEmpty) {
+                    return "Cannot leave description empty";
+                  }
+                },
+                controller: descriptionController,
+                decoration: InputDecoration(
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  hintText: "enter task description ",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: blueColor),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: blueColor),
                   ),
                 ),
-                const SizedBox(height: 18),
-                Text("selected date",
+              ),
+              const SizedBox(height: 18),
+              Text("selected date",
+                  style: GoogleFonts.poppins(
+                    fontSize: 15,
+                    color: Colors.black,
+                  )),
+              const SizedBox(height: 18),
+              InkWell(
+                onTap: () {
+                  selectDate();
+                  print(provider.selectedDate.toString());
+                },
+                child: Text(
+                    provider.selectedDate != null
+                        ? provider.selectedDate.toString().substring(0, 10)
+                        : DateTime.now().toString().substring(0, 10),
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 15,
-                      color: Colors.black,
+                      color: blueColor,
                     )),
-                const SizedBox(height: 18),
-                InkWell(
-                  onTap: () {
-                    selectDate();
+              ),
+              ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  onPressed: () {
+                    addTaskPressed();
                   },
-                  child: Text(provider.selectedDate.toString().substring(0, 10),
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        color: blueColor,
-                      )),
-                ),
-                ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                    onPressed: () {
-                      addTaskPressed();
-                    },
-                    child: const Text("Add task"))
-              ],
-            ),
+                  child: const Text("Add task"))
+            ],
           ),
         ),
       ),
@@ -142,11 +144,12 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
 
     DateTime? chosenDate = await showDatePicker(
       context: context,
-      initialDate: provider.selectedDate!,
+      initialDate: provider.selectedDate ?? DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     selectedDate = chosenDate!;
+    provider.selectedDate = selectedDate;
     setState(() {});
   }
 
@@ -155,11 +158,13 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
 
     if (formKey.currentState?.validate() ?? false) {
       TaskModel task = TaskModel(
-          userId: FirebaseAuth.instance.currentUser!.uid,
-          title: titleController.text,
-          description: descriptionController.text,
-          date: DateUtils.dateOnly(provider.selectedDate!)
-              .millisecondsSinceEpoch);
+        userId: FirebaseAuth.instance.currentUser!.uid,
+        title: titleController.text,
+        description: descriptionController.text,
+        date: DateUtils.dateOnly(provider.selectedDate ?? DateTime.now())
+            .millisecondsSinceEpoch,
+        dateCreated: Timestamp.fromDate(DateTime.now()),
+      );
 
       FirebaseManager.addTask(task);
       Navigator.pop(context);

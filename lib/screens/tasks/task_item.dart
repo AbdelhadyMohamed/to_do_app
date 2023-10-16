@@ -14,8 +14,6 @@ class TasksItem extends StatefulWidget {
 }
 
 class _TasksItemState extends State<TasksItem> {
-  bool slided = false;
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -76,7 +74,7 @@ class _TasksItemState extends State<TasksItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    slided == false ? widget.task.title : "",
+                    widget.task.title,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -84,7 +82,7 @@ class _TasksItemState extends State<TasksItem> {
                     ),
                   ),
                   Text(
-                    slided == false ? widget.task.description : "",
+                    widget.task.description,
                     style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,

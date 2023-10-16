@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -31,7 +30,7 @@ class FirebaseManager {
 
   static Stream<QuerySnapshot<TaskModel>> getTasks(DateTime date) {
     return getTasksCollection()
-        // .orderBy('date', descending: true)
+        .orderBy('dateCreated', descending: false)
         .where("userId", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
         .where("date",
             isEqualTo: DateUtils.dateOnly(date).millisecondsSinceEpoch)

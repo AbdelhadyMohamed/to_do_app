@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/layout/home_layout.dart';
@@ -20,7 +21,8 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text("To DO App"),
+          title: const Text("To Do App"),
+          // .tr(args: ['Easy localization', 'Dart'])
           bottom: const TabBar(
             tabs: [
               Tab(
