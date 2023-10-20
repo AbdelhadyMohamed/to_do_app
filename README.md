@@ -1,16 +1,8 @@
-# to_do_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20231015_231016](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/d25e82d4-280d-4c0d-9fef-b34b91bc43da)
+![Screenshot_20231015_230902](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/3ef1ac31-9580-45dd-b019-74c511c7afb6)
+![Screenshot_20231015_230838](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/7916f8bb-3e3f-478d-9b3b-1a89b6955f00)
+![Screenshot_20231015_230826](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/397aed14-c30a-4dab-bee4-270da9d5777f)
+![Screenshot_20231015_230809](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/38fc3899-5a4c-4e8a-b238-e531369cd808)
+![Screenshot_20231015_142205](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/8234744c-c1f3-481d-b3f9-7820f182216c)
+![Screenshot_20231015_142119](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/0d36e578-47f8-431f-b2bf-eb2a5bc8904d)
+![Screenshot_20231015_234504](https://github.com/AbdelhadyMohamed/to_do_app/assets/86628356/324fb3fe-e00d-4ce3-8b11-a6cc94f71497)
