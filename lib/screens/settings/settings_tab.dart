@@ -16,10 +16,11 @@ class SettingTab extends StatefulWidget {
 }
 
 class _SettingTabState extends State<SettingTab> {
-  String dropdownValue = list.first;
-
   @override
   Widget build(BuildContext context) {
+    String dropdownValue =
+        context.locale.languageCode == ("ar") ? list[1] : list.first;
+
     // var user = getUser();
     return Padding(
       padding: const EdgeInsets.only(bottom: 100, left: 22, right: 30),
