@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +38,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Edit Task",
+            Text("editTask".tr(),
                 style: GoogleFonts.poppins(
                     fontSize: 18,
                     color: Colors.black,
@@ -46,7 +47,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
             TextFormField(
               controller: widget.titleController,
               decoration: InputDecoration(
-                hintText: "enter task title ",
+                hintText: "enterTitle".tr(),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: blueColor),
@@ -61,7 +62,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
             TextFormField(
               controller: widget.descriptionController,
               decoration: InputDecoration(
-                hintText: "enter task description ",
+                hintText: "enterDescription".tr(),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: blueColor),
@@ -73,7 +74,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
               ),
             ),
             const SizedBox(height: 18),
-            Text("selected date",
+            Text("selectTime".tr(),
                 style: GoogleFonts.poppins(
                   fontSize: 15,
                   color: Colors.black,
@@ -90,7 +91,7 @@ class _TaskBottomSheetState extends State<EditTaskBottomSheet> {
                 onPressed: () {
                   editTaskPressed();
                 },
-                child: const Text("Save Changes"))
+                child: const Text("save").tr())
           ],
         ),
       ),

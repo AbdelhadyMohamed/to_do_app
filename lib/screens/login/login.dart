@@ -23,13 +23,13 @@ class LoginScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("To Do App"),
           // .tr(args: ['Easy localization', 'Dart'])
-          bottom: const TabBar(
+          bottom: TabBar(
             tabs: [
               Tab(
-                text: "Log in",
+                text: "login".tr(),
               ),
               Tab(
-                text: "Sign Up",
+                text: "signUp".tr(),
               ),
             ],
           ),
@@ -44,13 +44,13 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: emailController,
-                    decoration: const InputDecoration(labelText: 'Email'),
+                    decoration: InputDecoration(labelText: 'email'.tr()),
                     validator: validateEmail,
                   ),
                   TextFormField(
                     controller: passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(labelText: 'Password'.tr()),
                     validator: validatePassword,
                   ),
                   const SizedBox(height: 20),
@@ -68,16 +68,16 @@ class LoginScreen extends StatelessWidget {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: const Text("Error"),
-                                  content: const Text(
-                                    "Wrong email or password",
+                                  title: Text("error".tr()),
+                                  content: Text(
+                                    "Wrong email or password".tr(),
                                   ),
                                   actions: [
                                     ElevatedButton(
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: const Text("okay"),
+                                      child: Text("ok".tr()),
                                     )
                                   ],
                                 );
@@ -85,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                         });
                       }
                     },
-                    child: const Text('Login'),
+                    child: Text('login'.tr()),
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
 
   String? validatePassword(value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+      return 'Please enter your password'.tr();
     } else {
       return null;
     }
@@ -115,7 +115,7 @@ class LoginScreen extends StatelessWidget {
               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(value);
       if (!emailValid) {
-        return "please enter valid email";
+        return "please enter valid email".tr();
       }
       return null;
     }

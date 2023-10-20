@@ -1,4 +1,5 @@
 {
+  "hello": "مرحبا",
   "taskTitle": "عنوان المهمة",
   "taskDescription": "وصف المهمة",
   "mode": "السمة",
@@ -9,21 +10,43 @@
   "dark": "ليلي",
   "done": "تم",
   "addNewTask": "اضافة مهمه جديدة",
-  "selectTime": "اختار التاريخ",
+  "selectTime": "اختيار التاريخ",
   "add": "اضافه",
   "enterDescription":"ادخل وصف",
   "enterTitle":"ادخل عنوان",
   "editTask": "تعديل المهمه",
   "delete": "حذف",
   "edite": "تعديل",
-  "sinUp": "تسجيل مستخدم جديد",
+  "signUp": "تسجيل مستخدم جديد",
   "login": "تسجيل الدخول",
   "enterValidMail": "ادخل حساب صحيح",
   "enterPassword": "ادخل كلمة مرور",
   "enterEmail": "ادخل حساب",
-  "enterFirstName": "ادخل الاسم الاول",
+  "enterName": "الرجاء ادخال الاسم ",
   "enterLastName": "ادخل الاسم الثاني",
   "enterAge": "ادخل العمر",
-  "logOut": "تسجيل خروج"
+  "logOut": "تسجيل خروج",
+  "save": "حفظ",
+  "cantLeaveEmpty": "لا يمكن ان يبقي فارغا",
+  "email":"البريد الالكتروني",
+  "Please enter your email": "برجاء ادخال البريد الالكتروني",
+  "Confirm Email": "تأكيد البريد الالكتروني",
+  "email does not match": "برجاء التأكد من توافق البريد الالكتروني",
+  "Password": "كلمة المرور",
+  "Please enter your password": "برجاء ادخال كلمة المرور",
+  "Confirm Password": "تأكيد كلمة المرور",
+  "password does not match": "برجاء التأكد من توافق كلمة المرور",
+  "name": "الأسم",
+  "Please enter your name": "برجاء ادخال الاسم",
+  "age":"السن",
+  "Please enter your age": "برجاء ادخال السن",
+  "error": "حدث خطأ",
+  "ok": "الموافقه",
+  "Wrong email or password": "هناك خطأ في البريد الالكتروني او كلمة المرور",
+  "edit": "تعديل",
+  "age not valid": "برجاء ادخال العمر الصحيح"
+
+
+
 
 }

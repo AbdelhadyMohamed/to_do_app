@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/screens/login/login.dart';
 
@@ -22,10 +23,10 @@ class SignUp extends StatelessWidget {
           children: [
             TextFormField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(labelText: 'email'.tr()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
+                  return 'Please enter your email'.tr();
                 }
                 final bool emailValid = RegExp(
                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -37,10 +38,10 @@ class SignUp extends StatelessWidget {
               },
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Confirm Email'),
+              decoration: InputDecoration(labelText: 'Confirm Email'.tr()),
               validator: (value) {
                 if (value != emailController.text) {
-                  return 'email does not match';
+                  return 'email does not match'.tr();
                 } else {
                   return null;
                 }
@@ -49,37 +50,41 @@ class SignUp extends StatelessWidget {
             TextFormField(
               obscureText: true,
               controller: passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(labelText: 'Password'.tr()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your password';
+                  return 'Please enter your password'.tr();
                 }
               },
             ),
             TextFormField(
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Confirm Password'),
+              decoration: InputDecoration(labelText: 'Confirm Password'.tr()),
               validator: (value) {
                 if (value != passwordController.text) {
-                  return 'password does not match';
+                  return 'password does not match'.tr();
                 }
               },
             ),
             TextFormField(
               controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
+              decoration: InputDecoration(labelText: 'name'.tr()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your name';
+                  return 'Please enter your name'.tr();
                 }
               },
             ),
             TextFormField(
               controller: ageController,
-              decoration: const InputDecoration(labelText: 'age'),
+              decoration: InputDecoration(labelText: 'age'.tr()),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your age';
+                  return 'Please enter your age'.tr();
+                }
+                final bool ageValid = RegExp(r'^[0-9_.]+$').hasMatch(value);
+                if (!ageValid) {
+                  return "age not valid".tr();
                 }
               },
             ),
@@ -101,7 +106,7 @@ class SignUp extends StatelessWidget {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: const Text("error"),
+                            title: Text("error".tr()),
                             content: Text(
                               errorMessage.toString(),
                             ),
@@ -110,7 +115,7 @@ class SignUp extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text("okay"),
+                                child: Text("ok".tr()),
                               )
                             ],
                           );
@@ -118,7 +123,7 @@ class SignUp extends StatelessWidget {
                   });
                 }
               },
-              child: const Text('Sign Up'),
+              child: Text('signUp'.tr()),
             ),
           ],
         ),

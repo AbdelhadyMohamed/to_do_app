@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/models/task_model.dart';
 import 'package:to_do_app/screens/tasks/edit_task_bottom_sheet.dart';
@@ -36,7 +37,7 @@ class _TasksItemState extends State<TasksItem> {
                   setState(() {});
                 },
                 backgroundColor: Colors.red,
-                label: "delete",
+                label: "delete".tr(),
                 borderRadius: BorderRadius.circular(12),
                 icon: Icons.delete,
               ),
@@ -51,7 +52,7 @@ class _TasksItemState extends State<TasksItem> {
                   showEditTaskBottomSheet(context);
                 },
                 backgroundColor: Colors.blue,
-                label: "edit",
+                label: "edit".tr(),
                 borderRadius: BorderRadius.circular(25),
                 icon: Icons.edit,
               ),

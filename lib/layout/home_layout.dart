@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,17 +33,9 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,
       backgroundColor: mintGreen,
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, LoginScreen.routeName, (route) => false);
-              },
-              icon: Icon(Icons.logout))
-        ],
-        title: Text(
-            'Hello ${provider.userModel?.name != null ? provider.userModel?.name : ""}'),
+        title: const Text(
+            // ${provider.userModel?.name != null ? provider.userModel?.name : ""}
+            "hello").tr(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(

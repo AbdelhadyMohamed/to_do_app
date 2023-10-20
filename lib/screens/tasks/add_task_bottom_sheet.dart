@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text("Add new task",
+              Text("addNewTask".tr(),
                   style: GoogleFonts.poppins(
                       fontSize: 18,
                       color: Colors.black,
@@ -50,7 +51,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               TextFormField(
                 validator: (value) {
                   if (titleController.text.isEmpty) {
-                    return "Cannot leave title empty";
+                    return "cantLeaveEmpty".tr();
                   }
                   return null;
                 },
@@ -64,7 +65,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.red),
                   ),
-                  hintText: "enter task title ",
+                  hintText: "enterTitle".tr(),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: blueColor),
@@ -79,7 +80,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               TextFormField(
                 validator: (value) {
                   if (descriptionController.text.isEmpty) {
-                    return "Cannot leave description empty";
+                    return "cantLeaveEmpty".tr();
                   }
                 },
                 controller: descriptionController,
@@ -92,7 +93,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.red),
                   ),
-                  hintText: "enter task description ",
+                  hintText: "enterDescription".tr(),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: blueColor),
@@ -104,7 +105,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                 ),
               ),
               const SizedBox(height: 18),
-              Text("selected date",
+              Text("selectTime".tr(),
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     color: Colors.black,
@@ -131,7 +132,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                   onPressed: () {
                     addTaskPressed();
                   },
-                  child: const Text("Add task"))
+                  child: const Text("add").tr())
             ],
           ),
         ),

@@ -13,20 +13,30 @@ import 'package:easy_localization/easy_localization.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseFirestore.instance.enableNetwork();
 
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (context) => MyProvider(),
-    ),
-    ChangeNotifierProvider(
-      create: (context) => TasksProvider(),
-    ),
-  ], child: const MyApp()));
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => MyProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TasksProvider(),
+        ),
+      ],
+      child: EasyLocalization(
+          path: 'assets/translations',
+          saveLocale: true,
+          supportedLocales: const [
+            Locale("ar", "EG"),
+            Locale("en", "US"),
+          ],
+          startLocale: const Locale('en', 'US'),
+          child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
@@ -37,6 +47,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: MyThemeData.lightTheme,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
